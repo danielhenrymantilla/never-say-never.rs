@@ -1,0 +1,30 @@
+# Templated by `cargo-generate` using https://github.com/danielhenrymantilla/proc-macro-template
+[package]
+name = "never-say-never"
+authors = [
+    "Daniel Henry-Mantilla <daniel.henry.mantilla@gmail.com>",
+]
+version = "6.6.6"
+edition = "2018"
+
+license = "Zlib OR MIT OR Apache-2.0"
+repository = "https://github.com/danielhenrymantilla/never-say-never.rs"
+documentation = "https://docs.rs/never-say-never"
+readme = "README.md"
+
+description = "The never type (the true one!) in stable Rust."
+keywords = ["Never", "Ever", "say", "never", "flying-pigs"]
+
+[features]
+better-docs = []  # allowed to break MSRV
+ui-tests = ["better-docs"]
+
+[dependencies]
+
+[dev-dependencies]
+
+[workspace]
+
+[package.metadata.docs.rs]
+all-features = true
+

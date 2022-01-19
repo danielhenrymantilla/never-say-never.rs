@@ -1,0 +1,3 @@
+# Templated by `cargo-generate` using https://github.com/danielhenrymantilla/proc-macro-template
+/target
+Cargo.lock  # No deps, so no need to track it, not even for CI
