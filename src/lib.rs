@@ -53,25 +53,16 @@ let x: u32 = match Ok::<_, Never>(42) {
 #![no_std]
 #![forbid(unsafe_code)]
 
-/// Workaround for `fn_traits` and/or `unboxed_closures`
 mod fn_traits {
-    pub
-    trait FnOnce<Args> {
+    pub trait FnPtr {
         type Output;
     }
 
-    impl<F, R> FnOnce<()> for F
-    where
-        F : ::core::ops::FnOnce() -> R,
-    {
+    // This has to refer to a specific primitive type. A blanket impl produces bad diagnostics. See #3.
+    impl<R> FnPtr for fn() -> R {
         type Output = R;
     }
 }
 
 /// The `!` type. See [the main docs for more info][`crate`].
-pub
-type Never = <
-    fn() -> !
-    as
-    fn_traits::FnOnce<()>
->::Output;
+pub type Never = <fn() -> ! as fn_traits::FnPtr>::Output;
