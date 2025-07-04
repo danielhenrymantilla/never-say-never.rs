@@ -32,6 +32,7 @@ type `!` automagically coerces to any type, whereas an instance of
 That is, the following fails to compile:
 
 ```rust ,compile_fail
+# use std::convert::TryFrom;
 let x: u32 = match <u32 as TryFrom<u8>>::try_from(42) {
     | Ok(it) => it,
     | Err(unreachable) => unreachable, // Error, expected `u32`, found `Infallible`
